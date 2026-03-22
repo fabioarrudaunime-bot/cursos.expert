@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expert Radiologia | Cursos Ofertados</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #071120;
+      --bg2: #0c1a2d;
+      --card: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f4f7fb;
+      --muted: #b8c4d6;
+      --primary: #2f80ed;
+      --primary-dark: #1f5fb8;
+      --accent: #00c2ff;
+      --success: #18c37e;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(0, 194, 255, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(47, 128, 237, 0.16), transparent 25%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 70px 0 40px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .hero-text h1 span {
+      color: var(--accent);
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 700px;
+      margin-bottom: 25px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      color: #dbe9ff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+      color: var(--accent);
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      margin: 45px 0 22px;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 800px;
+      margin: 0 auto 35px;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 26px;
+      padding-bottom: 70px;
+    }
+
+    .course-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(10px);
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 194, 255, 0.4);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .course-image {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+      background: #0b1626;
+    }
+
+    .course-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .course-tag {
+      display: inline-block;
+      align-self: flex-start;
+      background: rgba(24, 195, 126, 0.16);
+      color: #86f0c0;
+      border: 1px solid rgba(24, 195, 126, 0.28);
+      font-size: 0.82rem;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .course-card h3 {
+      font-size: 1.32rem;
+      margin-bottom: 12px;
+      min-height: 58px;
+    }
+
+    .course-card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn {
+      text-decoration: none;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #e6eefc;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.14);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 35px;
+      }
+
+      .hero-text h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .course-image {
+        height: 190px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Expert Radiologia<br><span>Cursos Ofertados</span></h1>
+        <p>
+          Capacitação profissional com foco prático em tomografia computadorizada,
+          angiotomografia, ressonância magnética, protocolos e pós-processamento.
+          Escolha abaixo o curso ideal para sua evolução na radiologia.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge">Cursos Profissionais</span>
+          <span class="badge">Vídeos Explicativos</span>
+          <span class="badge">Simuladores Realistas</span>
+          <span class="badge">Aprendizado Prático</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>Aprenda com mais segurança</h2>
+        <p>Conteúdos voltados para estudantes e profissionais da radiologia.</p>
+        <p>Metodologia prática para aplicação no dia a dia do setor.</p>
+        <p>Treinamento com foco em operação, protocolos e entendimento técnico.</p>
+      </div>
+    </section>
+  </header>
+
+  <main class="container">
+    <h2 class="section-title">Escolha seu curso</h2>
+    <p class="section-subtitle">
+      Confira os cursos disponíveis e acesse o material explicativo ou a página de inscrição.
+    </p>
+
+    <section class="courses-grid">
+
+      <article class="course-card">
+        <img src="capas/tomografia.jpeg" alt="Tomografia 2.0 + Simulador" class="course-image">
+        <div class="course-content">
+          <span class="course-tag">Curso em destaque</span>
+          <h3>Tomografia 2.0 + Simulador</h3>
+          <p>
+            Curso completo para quem deseja aprofundar conhecimentos em tomografia
+            computadorizada, com suporte de simulador para treinar rotinas, operação
+            e compreensão prática do exame.
+          </p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://pay.hotmart.com/U99533247O" target="_blank">Comprar curso</a>
+            <a class="btn btn-secondary" href="https://youtu.be/IMRPUSYe4RE?si=w0v7kisx_sY16S5l" target="_blank">Vídeo explicativo</a>
+            <a class="btn btn-secondary" href="https://youtu.be/CZPBVwyf2_w?si=rwEZ-MnrECa3zG1R" target="_blank">Vídeo do simulador</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="capas/angio.png" alt="Angiotomografia" class="course-image">
+        <div class="course-content">
+          <span class="course-tag">Promoção (Desconto 20%)</span>
+          <h3>Angiotomografia + Simulador</h3>
+          <p>
+            Curso voltado para protocolos de angiotomografia, com abordagem prática
+            sobre fases do contraste, aquisição, planejamento e interpretação do fluxo
+            de trabalho no exame.
+          </p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://pay.hotmart.com/W66678860D?offDiscount=20OFF" target="_blank">Comprar curso</a>
+            <a class="btn btn-secondary" href="https://youtu.be/OYFgEt7B-ms?si=vC0cBbvPp8Ip3ql_" target="_blank">Vídeo explicativo</a>
+            <a class="btn btn-secondary" href="https://youtu.be/_Y6zUAL5WBU?si=eSN9F2Gw-j6RmJbo" target="_blank">Vídeo do simulador</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="capas/aplicação.png" alt="Aplicação de protocolos" class="course-image">
+        <div class="course-content">
+          <span class="course-tag"> Criação de Protocolos </span>
+          <h3>Aplicação de protocolos</h3>
+          <p>
+            Treinamento desenvolvido para ajudar na escolha e aplicação correta dos
+            protocolos, otimizando rotina, qualidade de imagem e segurança durante os exames.
+          </p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://pay.hotmart.com/P82741978M" target="_blank">Comprar curso</a>
+            <a class="btn btn-secondary" href="https://youtu.be/oOPafN_jYbA?si=1ehlWj37gAAzK9Ww" target="_blank">Vídeo explicativo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="capas/ressonancia.jpeg" alt="Física da Ressonância Magnética" class="course-image">
+        <div class="course-content">
+          <span class="course-tag">Promoção (Desconto 20%)</span>
+          <h3>Física da Ressonância Magnética</h3>
+          <p>
+            Curso ideal para compreender os fundamentos físicos da ressonância magnética,
+            incluindo formação de imagem, parâmetros, sequências e conceitos essenciais
+            para uma prática mais segura e consciente.
+          </p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://pay.hotmart.com/A103889216E?offDiscount=RADIO20" target="_blank">Comprar curso</a>
+            <a class="btn btn-secondary" href="https://youtu.be/o1PXVFAVuQ4?si=ZBYYqx4wQu2XEfBu" target="_blank">Vídeo explicativo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="capas/vr.png" alt="Mini Curso de VR (TC GE)" class="course-image">
+        <div class="course-content">
+          <span class="course-tag">Pós-processamento</span>
+          <h3>Mini Curso de VR (TC GE)</h3>
+          <p>
+            Curso direcionado ao uso de reconstruções VR em tomografia GE, com foco em
+            visualização volumétrica, apresentação anatômica e melhor aproveitamento
+            dos recursos de pós-processamento.
+          </p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://pay.hotmart.com/J82260495Y" target="_blank">Comprar curso</a>
+            <a class="btn btn-secondary" href="https://youtu.be/Sns8gtlPJ68?si=Ff3fYpm5olqqklZV" target="_blank">Vídeo explicativo</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Expert Radiologia — Cursos ofertados para aperfeiçoamento profissional.
+  </footer>
+</body>
+</html>
